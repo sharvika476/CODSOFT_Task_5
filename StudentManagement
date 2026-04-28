@@ -1,0 +1,68 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+class Student
+{
+    int roll;
+    String name;
+    String grade;
+    Student(int r,String n , String g)
+    {
+        roll=r;
+        name=n;
+        grade=g;
+    
+    }
+    void display()
+    {
+        System.out.println(roll + " " + name + "  " +  grade);
+
+    }
+}
+public class StudentManagement
+{
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Student> list=new ArrayList<>();
+        int choice;
+        do{
+            System.out.println("\n1.Add 2.display 3.search 4.exit");
+            System.out.println("enter choice: ");
+            choice = scan.nextInt();
+            if(choice==1)
+            {
+                System.out.println("roll ");
+                int r=scan.nextInt();
+                scan.nextLine();
+                System.out.println("name: ");
+                String n = scan.nextLine();
+                System.out.println("grade: ");
+                String g = scan.nextLine();
+                list.add(new Student(r,n,g));
+            }
+            else if(choice==2)
+            {
+                for(Student s : list)
+                {
+                    s.display();
+                }
+            }
+            else if(choice==3)
+            {
+                System.out.println("enter roll to search");
+                int r=scan.nextInt();
+                for(Student s : list)
+                {
+                    if(s.roll==r)
+                    {
+                        s.display();
+                    }
+                }
+            }
+
+            
+        }
+        while(choice!=4);
+        scan.close();
+    }
+}
